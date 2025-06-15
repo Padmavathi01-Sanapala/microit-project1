@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internship Application</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 font-sans p-6">
+
+  <h1 class="text-3xl font-bold text-indigo-700 mb-4">Internship Application Form</h1>
+
+  <form id="internshipForm" class="bg-white p-6 rounded shadow-md max-w-lg">
+    <div class="mb-4">
+      <label class="block text-gray-700 font-semibold">Name:</label>
+      <input type="text" id="name" required class="w-full p-2 border rounded" />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-semibold">Email:</label>
+      <input type="email" id="email" required class="w-full p-2 border rounded" />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-semibold">Phone:</label>
+      <input type="text" id="phone" required class="w-full p-2 border rounded" />
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 font-semibold">Field of Interest:</label>
+      <input type="text" id="interest" required class="w-full p-2 border rounded" />
+    </div>
+    <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+      Submit Application
+    </button>
+  </form>
+
+  <!-- Success message -->
+  <div id="successMessage" class="mt-6 text-green-600 font-semibold hidden">
+    ✅ Application submitted successfully!
+  </div>
+
+  <!-- User details preview -->
+  <div id="userDetails" class="mt-6 bg-white p-6 rounded shadow-md hidden">
+    <h2 class="text-xl font-bold text-indigo-700 mb-2">Submitted Details:</h2>
+    <p><strong>Name:</strong> <span id="showName"></span></p>
+    <p><strong>Email:</strong> <span id="showEmail"></span></p>
+    <p><strong>Phone:</strong> <span id="showPhone"></span></p>
+    <p><strong>Field of Interest:</strong> <span id="showInterest"></span></p>
+  </div>
+
+  <script>
+    // Wait for DOM to fully load
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("internshipForm");
+      const successMessage = document.getElementById("successMessage");
+      const userDetails = document.getElementById("userDetails");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent page reload
+
+        // Get form values
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const interest = document.getElementById("interest").value;
+
+        // Show success message and user details
+        successMessage.classList.remove("hidden");
+        userDetails.classList.remove("hidden");
+
+        document.getElementById("showName").textContent = name;
+        document.getElementById("showEmail").textContent = email;
+        document.getElementById("showPhone").textContent = phone;
+        document.getElementById("showInterest").textContent = interest;
+
+        // Optional: Reset the form
+        form.reset();
+      });
+    });
+  </script>
+
+</body>
+</html>
